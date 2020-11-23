@@ -1,0 +1,9 @@
+{
+  "host": "localhost",
+  "dialect": "mysql",
+  "timezone": "+09:00",
+  "logging": false,
+  "define": {
+    "timestamps": false
+  }
+}
