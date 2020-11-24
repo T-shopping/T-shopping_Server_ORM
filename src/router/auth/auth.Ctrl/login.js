@@ -1,18 +1,13 @@
 require('dotenv').config();
 const models = require('../../../models');
-const encrypt = require('../../../lib/');
+const encrypt = require('../../../lib/encrypt');
+const { createToken } = require('../../../lib/token');
 
 const login = async (req, res) => {
   const { body } = req;
 
   try {
-    if (!(body.email) && !(body.pw)) {
-      return res.status(400).json({
-        meeesage: "Email이나 비밀번호를 입력해주세요",
-      }) ;
-    }
-
-    const encryptData = encrypt.createToken(body.pw);
+    const encryptData = encrypt(body.pw);
 
     const user = await models.User.findOne({
       where: {
@@ -27,7 +22,7 @@ const login = async (req, res) => {
       });
     }
 
-    const token = createToken(email);
+    const token = await createToken(user.email);
 
     return res.status(200).json({
       message: "로그인 성공!",
