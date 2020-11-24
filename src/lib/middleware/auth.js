@@ -22,3 +22,5 @@ const loginCheck = async (req, res, next) => {
   next();
   
 }
+
+module.exports = loginCheck;

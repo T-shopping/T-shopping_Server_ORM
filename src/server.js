@@ -14,6 +14,7 @@ app.use(cors({ origin: true, credentials: true, }));
 const router = require('./router');
 const { PORT } = process.env;
 
+app.use('/static', express.static('public'));
 app.use('/api', router);
 
 app.listen(PORT, () => {

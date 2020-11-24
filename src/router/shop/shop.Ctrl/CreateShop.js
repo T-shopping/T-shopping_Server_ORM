@@ -12,7 +12,11 @@ const createPost = async (req, res) => {
       price: body.price,
       stock: body.stock,
       category: body.category,
-    })
+    });
+
+    return res.status(200).json({
+      message: "게시 성공!",
+    });
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -20,3 +24,5 @@ const createPost = async (req, res) => {
     });
   }
 }
+
+module.exports = createPost;
