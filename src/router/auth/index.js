@@ -6,6 +6,6 @@ const registerInfo = require('./auth.Ctrl/registerInfo');
 
 router.post('/login', login);
 router.post('/register', register);
-router.post('/registerInfo', registerInfo);
+router.post('/info', registerInfo);
 
 module.exports = router;

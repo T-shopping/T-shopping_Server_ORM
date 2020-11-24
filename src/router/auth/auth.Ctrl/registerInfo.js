@@ -1,11 +1,10 @@
 const models = require('../../../models');
-const encrypt = require('../../../lib/encrypt');
 
 const register = async (req, res) => {
   const { body } = req;
 
   try {
-    await models.User_info.create({
+    await models.Info.create({
       email: body.email,
       user_name: body.user_name,
       address: body.address,

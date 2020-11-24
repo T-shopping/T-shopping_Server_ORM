@@ -10,6 +10,8 @@ const register = async (req, res) => {
       pw: encrypt(body.pw),
     });
     
+    const email = body.email;
+
     return res.status(200).json({
       message: "회원가입 성공!",
       email,
