@@ -11,6 +11,7 @@ const createPost = async (req, res) => {
       user_name: info.user_name,
       price: body.price,
       stock: body.stock,
+      img: body.img,
       category: body.category,
     });
 

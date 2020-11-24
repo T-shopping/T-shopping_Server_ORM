@@ -22,10 +22,8 @@ const loginCheck = async (req, res, next) => {
     email: decodedToken.email,
   };
 
-  console.log(info);
-  console.log(user);
   req.user = user;
-  req.info = info;
+  req.info = info.dataValues;
   next();
   
 }
