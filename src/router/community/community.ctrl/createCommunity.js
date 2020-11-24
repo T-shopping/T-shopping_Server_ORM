@@ -4,7 +4,7 @@ const createCommunity = async (req, res) => {
   const { body, user, info } = req;
 
   try {
-    await models.Communiy.create({
+    await models.Community.create({
       title: body.title,
       content: body.content,
       user_name: info.user_name,

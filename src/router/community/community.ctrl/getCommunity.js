@@ -4,7 +4,7 @@ const getPost = async (req, res) => {
   const { idx } = req.params;
   
   try {
-    const community = await models.Communiy.findOne({
+    const community = await models.Community.findOne({
       where: {
         idx,
       },

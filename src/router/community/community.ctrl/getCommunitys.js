@@ -1,27 +1,27 @@
 const models = require('../../../models');
 
 const getShop = async (req, res) => {
-  const { body } = req;
-  const { page } = req.query;
+  const page = req.params.page;
   const page_size = 10;
 
   try {
-    const communitylist = await models.Communiy.findAll();
+    const communitylist = await models.Community.findAll();
 
-    const totalPage = Math.ceil(communitylist / page_size);
+    const totalPage = 0 + Math.ceil(communitylist.length / page_size);
+    const startRow = 0 + (page * page_size); 
 
-    const page = await models.Communiy.findAll({
-      limit: page_size,
+    const pages = await models.Community.findAll({
       offset: startRow,
+      limit: page_size,
       order: [
-        ['created_at', 'DESC']
+        ['idx', 'DESC']
       ],
     });   
 
     return res.status(200).json({
       message: "페이지 불러오기 성공",
       totalPage,
-
+      pages
     });
   } catch (err) {
     console.log(err);

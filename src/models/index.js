@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../config/database.json');
 
-const sequelize = new Sequelize('t-server', 'root', '0000', {
+const sequelize = new Sequelize('t-shopping', 'root', '1234', {
   host: database.host,
   dialect: database.dialect,
   timezone: database.timezone,
@@ -12,13 +12,13 @@ const sequelize = new Sequelize('t-server', 'root', '0000', {
 
 const UserM = require('./User');
 const InfoM = require('./Info');
-const CommuniyM = require('./Community');
+const CommunityM = require('./Community');
 const ShopM = require('./Shop');
 
 module.exports = {
   User: UserM(sequelize, Sequelize),
   Info: InfoM(sequelize, Sequelize),
-  Communiy: CommuniyM(sequelize, Sequelize),
+  Community: CommunityM(sequelize, Sequelize),
   Shop: ShopM(sequelize, Sequelize),
 }
 
