@@ -16,14 +16,19 @@ const deleteShop = async (req, res) => {
     if (!Shop) {
       return res.status(404).json({
         message: "없는 게시글입니다."
-      })
+      });
     }
-    if(!(Shop.u))
+    if(!(Shop.idx === user.idx)){
+      return res.status(403).json({
+        message: "자신의 게시물이 아닙니다."
+      });
+    }
 
-
-
-
-
+    await models.Shop.destroy({
+      where: {
+        idx: idx,
+      },
+    });
     return res.status(200).json({
       message: "삭제 성공!",
     });
