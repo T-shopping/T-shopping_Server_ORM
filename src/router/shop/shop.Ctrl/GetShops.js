@@ -5,22 +5,19 @@ const getShop = async (req, res) => {
   const { page } = req.params;
 
   try {
-    const shop = await models.Shop.findOne({
-      where: {
-        
-      },
+    let shops = [];
+    shops = await models.Shop.findAll({
+      order: [
+        ['created_At', 'DESC'],
+      ],
       raw: true,
-    });
-
-    if (!post) {
-      return res.sta(404).json({
-        message: "잘못된 요청입니다",
-      });
-    }
+    })
 
     return res.status(200).json({
-      message: "삭제 성공!",
+      message: "게시물 불러오기 완료.",
+      shops
     });
+
   } catch (err) {
     console.log(err);
     return res.status(500).json({

@@ -8,9 +8,9 @@ const getShop = require('./shop.Ctrl/GetShop');
 const modifyShop = require('./shop.Ctrl/ModifyShop');
 
 router.post('/create', authMiddleware, createShop);
-// router.get('/get', getShops);
+router.get('/get', getShops);
 router.get('/get/:idx', getShop);
 // router.modifyShop('/modify/:idx', modifyShop);
-router.delete('/delete/:idx', authMiddleware, deleteShop);
+router.delete('/delete/:idx', authMiddleware, deleteShop);4
 
 module.exports = router;
