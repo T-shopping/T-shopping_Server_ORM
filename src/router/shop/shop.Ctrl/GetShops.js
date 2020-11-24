@@ -1,23 +1,28 @@
 const models = require('../../../models');
 
-const getShop = async (req, res) => {
-  const { user } = req;
-  const { page } = req.params;
+const getShops = async (req, res) => {
+  const page = req.params.page;
+  const page_size = 6;
 
   try {
-    let shops = [];
-    shops = await models.Shop.findAll({
+    const communitylist = await models.Shop.findAll();
+
+    const totalPage = 0 + Math.ceil(communitylist.length / page_size);
+    const startRow = (page * page_size); 
+
+    const pages = await models.Shop.findAll({
+      offset: startRow,
+      limit: page_size,
       order: [
-        ['created_At', 'DESC'],
+        ['idx', 'DESC']
       ],
-      raw: true,
-    })
+    });   
 
     return res.status(200).json({
-      message: "게시물 불러오기 완료.",
-      shops
+      message: "페이지 불러오기 성공",
+      totalPage,
+      pages
     });
-
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -26,4 +31,4 @@ const getShop = async (req, res) => {
   }
 }
 
-module.exports = getShop;
+module.exports = getShops;
