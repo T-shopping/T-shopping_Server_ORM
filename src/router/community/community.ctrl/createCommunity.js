@@ -1,18 +1,13 @@
 const models = require('../../../models');
 
-const createPost = async (req, res) => {
+const createCommunity = async (req, res) => {
   const { body, user, info } = req;
 
   try {
-    await models.Shop.create({
-      item_name: body.item_name,
-      item_content: body.item_content,
-      user_email: user.email,
+    await models.Communiy.create({
+      title: body.title,
+      content: body.content,
       user_name: info.user_name,
-      price: body.price,
-      stock: body.stock,
-      img: body.img,
-      category: body.category,
     });
 
     return res.status(200).json({
@@ -26,4 +21,4 @@ const createPost = async (req, res) => {
   }
 }
 
-module.exports = createPost;
+module.exports = createCommunity;
