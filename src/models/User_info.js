@@ -17,21 +17,25 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    title: {
-      field: 'title',
+    address: {
+      field: 'address',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
-      field: 'content',
+    branch_number: {
+      field: 'branch_number',
       type: DataTypes.STRING,
       allowNull: false,
     },
-    view: {
-      field: 'view',
-      type: DataTypes.INTEGER,
+    phone: {
+      field: 'phone',
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 0,
+    },
+    gender: {
+      field: 'gender',
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
   }, {
     tableName: 'user_info',

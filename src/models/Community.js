@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: Date.now,
     },
   }, {
-    tableName: 'shop',
+    tableName: 'community',
     timestamps: false,
   });
 
