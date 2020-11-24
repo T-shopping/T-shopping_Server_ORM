@@ -21,4 +21,4 @@ const createCommunity = async (req, res) => {
   }
 }
 
-module.exports = createCommunity;
+module.exports = createCommunity
