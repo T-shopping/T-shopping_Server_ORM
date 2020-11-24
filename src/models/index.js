@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../config/database.json');
 
-const sequelize = new Sequelize('T-shopping', 'root', '1234', {
+const sequelize = new Sequelize('t-server', 'root', '0000', {
   host: database.host,
   dialect: database.dialect,
   timezone: database.timezone,
