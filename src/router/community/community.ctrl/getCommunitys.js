@@ -8,7 +8,7 @@ const getShop = async (req, res) => {
     const communitylist = await models.Community.findAll();
 
     const totalPage = 0 + Math.ceil(communitylist.length / page_size);
-    const startRow = 0 + (page * page_size); 
+    const startRow = (page * page_size); 
 
     const pages = await models.Community.findAll({
       offset: startRow,
