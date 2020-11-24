@@ -5,10 +5,10 @@ const { v4: uuidv4 } = require('uuid');
 const uuid = uuidv4();
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../../public'))
+    cb(null, path.join(__dirname, '../../public'))
   },
   filename: (req, file, cb) => {
-    cb(null, uuid) // cb 콜백함수를 통해 전송된 파일 이름 설정
+    cb(null, uuid + '.png') // cb 콜백함수를 통해 전송된 파일 이름 설정
   }
 })
 
@@ -18,7 +18,7 @@ router.post('/', upload.single('file'), (req, res) => {
   console.log(req.file);
   res.status(200).json({
     data: {
-      file: uuid,
+      file: uuid + '.png',
     },
   });
 });
