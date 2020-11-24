@@ -12,13 +12,20 @@ const loginCheck = async (req, res, next) => {
   
   const decodedToken = await verifyToken(token);
   
-  const user = await models.User.findOne({
+  const info = await models.Info.findOne({
     where: {
       email: decodedToken.email,
     },
   });
 
+  const user = {
+    email: decodedToken.email,
+  };
+
+  console.log(info);
+  console.log(user);
   req.user = user;
+  req.info = info;
   next();
   
 }
